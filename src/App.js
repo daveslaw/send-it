@@ -1,9 +1,32 @@
 import "./App.css";
-import Depts from "./components/Depts/Depts";
-import { BrowserRouter as Router } from "react-router-dom";
+import Home from "./routes/Home/Home";
+import { Route, Routes, Outlet } from "react-router-dom";
+
+
+
+const NavBar = () => {
+	return (
+		<div>
+			<div><h2>NavBar</h2></div>
+			<Outlet/>
+		</div>
+	)
+}
 
 const App = () => {
-	return <Depts />;
+	return (
+		<Routes>
+			<Route path='/' element={<NavBar />}>
+				<Route index element={<Home />}/>
+
+				
+
+
+			</Route>
+
+		
+		</Routes>
+	);
 };
 
 export default App;
