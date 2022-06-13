@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
+import "./departments.styles.scss"
 
 const App = () => {
 	const deptArray = [
@@ -27,16 +27,15 @@ const App = () => {
 
 	return (
 		<div className="departments-container">
-      {deptArray.map((department => (
-        <div className="department-container" key={department.id}>
-				{/* <img /> */}
-				<div className="department-body-container">
-					<h2>{department.name}</h2>
-					<p>Shop now</p>
+			{deptArray.map((department) => (
+				<div className="department-container" key={department.id}>
+					<div className="background-image"/>
+					<div className="department-body-container">
+						<h2>{department.name}</h2>
+						<p>Shop now</p>
+					</div>
 				</div>
-			</div>
-      )))}
-			
+			))}
 		</div>
 	);
 };
