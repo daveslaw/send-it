@@ -1,6 +1,7 @@
 import "./App.css";
 import Home from "./routes/Home/Home";
-import NavBar from './routes/NavBar/NavBar'
+import NavBar from './routes/NavBar/NavBar';
+import SignIn from './routes/SignIn/SignIn';
 import { Route, Routes } from "react-router-dom";
 
 
@@ -22,7 +23,7 @@ const App = () => {
 			<Route path="/" element={<NavBar />}>
 				<Route index element={<Home />} />
 				<Route path='shop' element={<Shop/>}/>
-				<Route path='contact' element={<Contact/>}/>
+				<Route path='sign-in' element={<SignIn/>}/>
 			</Route>
 		</Routes>
 	);
