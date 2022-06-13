@@ -1,6 +1,6 @@
 import "./App.css";
-import "./departments.styles.scss";
 import Depts from "./components/Depts/Depts";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
 	return <Depts />;
