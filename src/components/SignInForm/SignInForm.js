@@ -2,9 +2,11 @@ import { React, useState } from "react";
 import {
 	createAuthUserWithEmailAndPassword,
 	createUserDoc,
+	signInWithGooglePopup,
 } from "../../utils/Firebase/firebase.utils";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
+import "./SignInForm.scss";
 
 const defaultFormData = {
 	email: "",
@@ -20,9 +22,15 @@ const SignInForm = () => {
 		setFormData({ ...formData, [name]: value });
 	};
 
+	const logGoogleUser = async () => {
+		const { user } = await signInWithGooglePopup();
+		const userDocRef = await createUserDoc(user);
+	};
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		
+		console.log(formData);
+
 		// try {
 		// 	const { user } = await createAuthUserWithEmailAndPassword(
 		// 		email,
@@ -47,8 +55,6 @@ const SignInForm = () => {
 			<h2>I already have an account</h2>
 			<span>Sign in with your email and password</span>
 			<form onSubmit={handleSubmit}>
-				
-
 				<FormInput
 					label="Email"
 					type="email"
@@ -66,9 +72,12 @@ const SignInForm = () => {
 					name="password"
 					value={password}
 				/>
-
-				
-				<Button type="submit">Sign in</Button>
+				<div className="buttons-container">
+					<Button type="submit">Sign in</Button>
+					<Button buttonType="google" onClick={logGoogleUser}>
+						Google Login
+					</Button>
+				</div>
 			</form>
 		</div>
 	);
