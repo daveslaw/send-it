@@ -11,12 +11,6 @@ const Shop = () => {
 	)
 }
 
-const Contact = () => {
-	return (
-		<div>Contact Page</div>
-	)
-}
-
 const App = () => {
 	return (
 		<Routes>
