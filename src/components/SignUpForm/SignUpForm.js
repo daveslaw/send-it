@@ -12,13 +12,19 @@ const SignUpForm = () => {
 	const { displayName, email, password, confirmPassword } = formData;
 
 	const handleFormInput = (event) => {
-		const { name } = event;
+		const { name, value } = event.target;
+        setFormData({...formData, [name]: value})
 	};
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(formData)
+    }
 
 	return (
 		<div>
 			<h1>Sign up with your email and password</h1>
-			<form onSubmit={() => {}}>
+			<form onSubmit={handleSubmit}>
 				<label>Display Name</label>
 				<input
 					type="text"
