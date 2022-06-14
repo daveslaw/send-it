@@ -1,6 +1,6 @@
 import { React, Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
-import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
+import { ReactComponent as TruckLogo } from "../../assets/truck.svg";
 import "./navbar.styles.scss";
 
 const NavBar = () => {
@@ -8,7 +8,7 @@ const NavBar = () => {
 		<>
 			<div className="navbar">
 				<Link to="/" className="logo-container">
-					<CrownLogo className="logo" />
+					<TruckLogo className="logo" />
 				</Link>
 				<div className="nav-links-container">
 					<Link className="nav-link" to="/shop">

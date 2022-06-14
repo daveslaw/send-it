@@ -3,9 +3,9 @@ import {
 	createAuthUserWithEmailAndPassword,
 	createUserDoc,
 } from "../../utils/Firebase/firebase.utils";
-import FormInput from '../FormInput/FormInput';
-import './SignUpForm.scss';
-import Button from '../Button/Button';
+import FormInput from "../FormInput/FormInput";
+import "./SignUpForm.scss";
+import Button from "../Button/Button";
 
 const defaultFormData = {
 	displayName: "",
@@ -34,28 +34,27 @@ const SignUpForm = () => {
 				email,
 				password
 			);
-            await createUserDoc(user, {displayName})
-            resetFormData();
+			await createUserDoc(user, { displayName });
+			resetFormData();
 		} catch (error) {
-            if (error.code === 'auth/email-already-in-use') {
-                alert('Cannot create user, email already in use')
-            }
+			if (error.code === "auth/email-already-in-use") {
+				alert("Cannot create user, email already in use");
+			}
 			console.log("user creation created an error ", error);
 		}
 	};
 
-    const resetFormData = () => {
-        setFormData(defaultFormData)
-    }
+	const resetFormData = () => {
+		setFormData(defaultFormData);
+	};
 
 	return (
 		<div className="sign-up-container">
-            <h2>Don't have an account?</h2>
+			<h2>Don't have an account?</h2>
 			<span>Sign up with your email and password</span>
 			<form onSubmit={handleSubmit}>
-				
 				<FormInput
-                    label='Display Name'
+					label="Display Name"
 					type="text"
 					required
 					onChange={handleFormInput}
@@ -63,9 +62,8 @@ const SignUpForm = () => {
 					value={displayName}
 				/>
 
-				
 				<FormInput
-                    label='Email'
+					label="Email"
 					type="email"
 					required
 					onChange={handleFormInput}
@@ -73,9 +71,8 @@ const SignUpForm = () => {
 					value={email}
 				/>
 
-				
 				<FormInput
-                    label='Password'
+					label="Password"
 					type="password"
 					required
 					onChange={handleFormInput}
@@ -83,9 +80,8 @@ const SignUpForm = () => {
 					value={password}
 				/>
 
-				
 				<FormInput
-                    label='Confirm Password'
+					label="Confirm Password"
 					type="password"
 					required
 					onChange={handleFormInput}
