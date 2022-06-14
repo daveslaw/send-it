@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import {
-	createAuthUserWithEmailAndPassword,
 	createUserDoc,
 	signInWithGooglePopup,
+    signInAuthUserWithEmailAndPassword,
 } from "../../utils/Firebase/firebase.utils";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
@@ -22,28 +22,35 @@ const SignInForm = () => {
 		setFormData({ ...formData, [name]: value });
 	};
 
-	const logGoogleUser = async () => {
+	const signInWithGoogle = async () => {
 		const { user } = await signInWithGooglePopup();
-		const userDocRef = await createUserDoc(user);
+		await createUserDoc(user);
 	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		console.log(formData);
+        try {
+            const response = await signInAuthUserWithEmailAndPassword(email, password)
+            console.log(response);
+            resetFormData();
+        }
+        catch(error) {
+            switch (error.code) {
+                case 'auth/wrong-password': 
+                    alert('Incorrect password')
+                    break
+                case 'auth/user-not-found':
+                    alert('No user associated with this email')
+                    break;
+                default:
+                    console.log(error)
+            }
+            
 
-		// try {
-		// 	const { user } = await createAuthUserWithEmailAndPassword(
-		// 		email,
-		// 		password
-		// 	);
-		// 	await createUserDoc(user, { displayName });
-		// 	resetFormData();
-		// } catch (error) {
-		// 	if (error.code === "auth/email-already-in-use") {
-		// 		alert("Cannot create user, email already in use");
-		// 	}
-		// 	console.log("user creation created an error ", error);
-		// }
+        }
+
+		
 	};
 
 	const resetFormData = () => {
@@ -74,7 +81,7 @@ const SignInForm = () => {
 				/>
 				<div className="buttons-container">
 					<Button type="submit">Sign in</Button>
-					<Button buttonType="google" onClick={logGoogleUser}>
+					<Button type='button' buttonType="google" onClick={signInWithGoogle}>
 						Google Login
 					</Button>
 				</div>
