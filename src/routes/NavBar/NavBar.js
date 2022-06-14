@@ -1,9 +1,12 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as TruckLogo } from "../../assets/truck.svg";
 import "./navbar.styles.scss";
+import  {UserContext} from "../../context/user.context";
 
 const NavBar = () => {
+	const { currentUser } = useContext(UserContext)
+	console.log(currentUser);
 	return (
 		<>
 			<div className="navbar">
