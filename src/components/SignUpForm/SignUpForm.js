@@ -1,4 +1,8 @@
 import { React, useState } from "react";
+import {
+	createAuthUserWithEmailAndPassword,
+	createUserDoc,
+} from "../../utils/Firebase/firebase.utils";
 
 const defaultFormData = {
 	displayName: "",
@@ -13,12 +17,32 @@ const SignUpForm = () => {
 
 	const handleFormInput = (event) => {
 		const { name, value } = event.target;
-        setFormData({...formData, [name]: value})
+		setFormData({ ...formData, [name]: value });
 	};
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log(formData)
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		if (password !== confirmPassword) {
+			alert("Passwords do not match");
+			return;
+		}
+		try {
+			const { user } = await createAuthUserWithEmailAndPassword(
+				email,
+				password
+			);
+            await createUserDoc(user, {displayName})
+            resetFormData();
+		} catch (error) {
+            if (error.code === 'auth/email-already-in-use') {
+                alert('Cannot create user, email already in use')
+            }
+			console.log("user creation created an error ", error);
+		}
+	};
+
+    const resetFormData = () => {
+        setFormData(defaultFormData)
     }
 
 	return (
@@ -31,7 +55,7 @@ const SignUpForm = () => {
 					required
 					onChange={handleFormInput}
 					name="displayName"
-                    value={displayName}
+					value={displayName}
 				></input>
 
 				<label>Email</label>
@@ -40,7 +64,7 @@ const SignUpForm = () => {
 					required
 					onChange={handleFormInput}
 					name="email"
-                    value={email}
+					value={email}
 				></input>
 
 				<label>Password</label>
@@ -49,7 +73,7 @@ const SignUpForm = () => {
 					required
 					onChange={handleFormInput}
 					name="password"
-                    value={password}
+					value={password}
 				></input>
 
 				<label>Confirm Password</label>
@@ -58,7 +82,7 @@ const SignUpForm = () => {
 					required
 					onChange={handleFormInput}
 					name="confirmPassword"
-                    value={confirmPassword}
+					value={confirmPassword}
 				></input>
 				<button type="submit">Sign up</button>
 			</form>
