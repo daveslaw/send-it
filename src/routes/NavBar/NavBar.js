@@ -3,10 +3,16 @@ import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as TruckLogo } from "../../assets/truck.svg";
 import "./navbar.styles.scss";
 import { UserContext } from "../../context/user.context";
-import {signOutUser} from '../../utils/Firebase/firebase.utils'
+import {signOutUser} from '../../utils/Firebase/firebase.utils';
+import CartIcon from '../../components/CartIcon/CartIcon'
+import CartDropdown from '../../components/CartDropdown/CartDropdown'
+import { ToggleContext } from "../../context/toggle.context";
+
 
 const NavBar = () => {
 	const { currentUser } = useContext(UserContext);
+	const {show} = useContext(ToggleContext);
+	
 	
 
 	return (
@@ -26,7 +32,9 @@ const NavBar = () => {
 							SIGN IN
 						</Link>
 					)}
+					<CartIcon/>
 				</div>
+				{show && <CartDropdown/>}
 			</div>
 			<Outlet />
 		</>

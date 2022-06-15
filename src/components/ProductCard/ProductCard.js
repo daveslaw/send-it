@@ -10,7 +10,7 @@ const ProductCard = ({product}) => {
         <img src={imageUrl} alt={`${name}`}/>
         <div className="product-info-footer">
             <div className="product-name">{name}</div>
-            <div className="product-price">{price}</div>
+            <div className="product-price">${parseFloat(price).toFixed(2)}</div>
         </div>
         <Button buttonType="inverted">Add to cart</Button>
         
