@@ -3,9 +3,15 @@ import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as TruckLogo } from "../../assets/truck.svg";
 import "./navbar.styles.scss";
 import { UserContext } from "../../context/user.context";
+import {signOutUser} from '../../utils/Firebase/firebase.utils'
 
 const NavBar = () => {
-	const { currentUser } = useContext(UserContext);
+	const { currentUser, setCurrentUser } = useContext(UserContext);
+	const signOutHandler = async () => {
+		await signOutUser;
+		
+		setCurrentUser(null);
+	}
 
 	return (
 		<>
@@ -18,7 +24,7 @@ const NavBar = () => {
 						SHOP
 					</Link>
 					{currentUser ? (
-						<span className="nav-link">SIGN OUT</span>
+						<span className="nav-link" onClick={signOutHandler}>SIGN OUT</span>
 					) : (
 						<Link className="nav-link" to="/auth">
 							SIGN IN
