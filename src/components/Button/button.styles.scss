@@ -9,12 +9,19 @@
 	background-color: black;
 	color: white;
 	text-transform: uppercase;
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
 
 	font-weight: bolder;
 	border: none;
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
+
+	&:active {
+		transform: scale(0.97);
+		/* Scaling button to 0.98 to its original size */
+		box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+	}
 
 	&:hover {
 		background-color: white;
