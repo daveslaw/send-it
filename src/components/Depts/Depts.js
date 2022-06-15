@@ -1,4 +1,3 @@
-import React from "react";
 import DeptItem from '../DeptItem/DeptItem';
 import './depts.styles.scss';
 

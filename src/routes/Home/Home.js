@@ -1,4 +1,3 @@
-import React from 'react';
 import Depts from "../../components/Depts/Depts";
 
 
