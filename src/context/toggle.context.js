@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
 export const ToggleContext = createContext({
-	show: null,
-	setShow: () => null,
+	show: false,
+	setShow: () => {},
 });
 
 export const ToggleProvider = ({ children }) => {
