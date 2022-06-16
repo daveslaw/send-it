@@ -1,11 +1,16 @@
 import "./cart-dropdown.scss";
 import Button from "../Button/Button";
 import CartItem from "../CartItem/CartItem";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../context/cart.context";
 
 const CartDropdown = () => {
-	const { cartItems } = useContext(CartContext);
+	
+  const { cartItems } = useContext(CartContext);
+
+  useEffect(() => {
+    console.log(cartItems)
+  }, [])
 
 	return (
 		<div className="cart-dropdown-container">
