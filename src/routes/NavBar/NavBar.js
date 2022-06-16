@@ -6,12 +6,12 @@ import { UserContext } from "../../context/user.context";
 import {signOutUser} from '../../utils/Firebase/firebase.utils';
 import CartIcon from '../../components/CartIcon/CartIcon'
 import CartDropdown from '../../components/CartDropdown/CartDropdown'
-import { ToggleContext } from "../../context/toggle.context";
+import { CartContext } from "../../context/cart.context";
 
 
 const NavBar = () => {
 	const { currentUser } = useContext(UserContext);
-	const {show} = useContext(ToggleContext);
+	const {show} = useContext(CartContext);
 	
 	
 
