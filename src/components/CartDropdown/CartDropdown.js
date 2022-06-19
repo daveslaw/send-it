@@ -5,14 +5,19 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 
 const CartDropdown = () => {
-	const { cartItems } = useContext(CartContext);
+	const { cartItems, cartPrice } = useContext(CartContext);
 
 	return (
 		<div className="cart-dropdown-container">
-			<div className="cart-items"></div>
-			{cartItems.map((item) => (
-				<CartItem key={item.id} product={item} />
-			))}
+			<div className="cart-items">
+				{cartItems.map((item) => (
+					<CartItem key={item.id} product={item} />
+				))}
+			<div>Total Price: ${parseFloat(cartPrice).toFixed(2)}</div>
+			</div>
+			
+
+
 			<Button>checkout</Button>
 		</div>
 	);
