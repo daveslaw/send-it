@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/cart.context";
 
 const CartDropdown = () => {
-	const { cartItems, cartPrice } = useContext(CartContext);
+	const { cartItems, totalPrice, setShow } = useContext(CartContext);
 	const navigate = useNavigate();
 	const navToCheckoutHandler = () => {
 		navigate("/checkout");
+		setShow(false);
 	};
 
 	return (
@@ -20,7 +21,7 @@ const CartDropdown = () => {
 				))}
 				<div>
 					{cartItems.length > 0
-						? `Total Price: $${parseFloat(cartPrice).toFixed(2)}`
+						? `Total Price: $${parseFloat(totalPrice).toFixed(2)}`
 						: `Cart is empty`}
 				</div>
 			</div>

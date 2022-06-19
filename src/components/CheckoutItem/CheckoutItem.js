@@ -20,12 +20,12 @@ const CheckoutItem = ({ cartItem }) => {
 				<div className="arrow" onClick={decreaseHandler}>
 					&#10094;
 				</div>
-				<span className='value'>{quantity}</span>
+				<span className="value">{quantity}</span>
 				<div className="arrow" onClick={increaseHandler}>
 					&#10095;
 				</div>
 			</span>
-			<span className="price">{price}</span>
+			<span className="price">${parseFloat(price).toFixed(2)}</span>
 			<div className="remove-button" onClick={clearItemHandler}>
 				&#10005;
 			</div>
