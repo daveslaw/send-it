@@ -21,7 +21,4 @@ export const CartItems = styled.div`
 	overflow: scroll;
 `;
 
-//   button {
-//     margin-top: auto;
-//   }
-// }
+
