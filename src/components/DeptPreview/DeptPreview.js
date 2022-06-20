@@ -1,29 +1,22 @@
-import "./DeptPreview";
+import { DeptPreviewContainer, Title, Preview } from "./DeptPreview.styles.js";
 import ProductCard from "../ProductCard/ProductCard";
-import './DeptPreview.scss';
-import { Link } from "react-router-dom";
-
 
 const DeptPreview = ({ title, products }) => {
-	// const navigate = useNavigate();
-	// const navToDeptHandler = () => {
-	// 	navigate(`/shop/${title}`);		
-	// };
-	
-	
 	return (
-		<div className="dept-preview-container">
+		<DeptPreviewContainer>
 			<h2>
-				<Link to={title} className="title">{title.toUpperCase()}</Link>
+				<Title to={title} className="title">
+					{title.toUpperCase()}
+				</Title>
 			</h2>
-			<div className="preview">
+			<Preview>
 				{products
 					.filter((_, index) => index < 4)
 					.map((product) => (
 						<ProductCard key={product.id} product={product} />
 					))}
-			</div>
-		</div>
+			</Preview>
+		</DeptPreviewContainer>
 	);
 };
 

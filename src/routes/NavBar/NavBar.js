@@ -1,7 +1,12 @@
 import { Fragment, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { ReactComponent as TruckLogo } from "../../assets/truck.svg";
-import { NavigationContainer, LogoContainer, NavLinks, NavLink } from "./navbar.styles.js";
+import {
+	NavigationContainer,
+	LogoContainer,
+	NavLinks,
+	NavLink,
+} from "./navbar.styles.js";
 import { UserContext } from "../../context/user.context";
 import { signOutUser } from "../../utils/Firebase/firebase.utils";
 import CartIcon from "../../components/CartIcon/CartIcon";
@@ -15,21 +20,17 @@ const NavBar = () => {
 	return (
 		<>
 			<NavigationContainer>
-				<LogoContainer to="/" >
+				<LogoContainer to="/">
 					<TruckLogo className="logo" />
 				</LogoContainer>
 				<NavLinks>
-					<NavLink  to="/shop">
-						SHOP
-					</NavLink>
+					<NavLink to="/shop">SHOP</NavLink>
 					{currentUser ? (
-						<NavLink as='span' onClick={signOutUser}>
+						<NavLink as="span" onClick={signOutUser}>
 							SIGN OUT
 						</NavLink>
 					) : (
-						<NavLink  to="/auth">
-							SIGN IN
-						</NavLink>
+						<NavLink to="/auth">SIGN IN</NavLink>
 					)}
 					<CartIcon />
 				</NavLinks>

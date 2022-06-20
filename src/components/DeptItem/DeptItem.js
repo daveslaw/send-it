@@ -1,4 +1,4 @@
-import "./dept-item.styles.scss";
+import "./dept-item.styles.js";
 
 const DeptItem = ({imageUrl, title}) => {
 	return (
