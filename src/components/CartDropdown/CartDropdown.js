@@ -1,4 +1,4 @@
-import "./cart-dropdown.scss";
+import {CartDropdownContainer, CartItems} from "./cart-dropdown.styles.js";
 import Button from "../Button/Button";
 import CartItem from "../CartItem/CartItem";
 import { useContext } from "react";
@@ -14,8 +14,8 @@ const CartDropdown = () => {
 	};
 
 	return (
-		<div className="cart-dropdown-container">
-			<div className="cart-items">
+		<CartDropdownContainer>
+			<CartItems>
 				{cartItems.map((item) => (
 					<CartItem key={item.id} product={item} />
 				))}
@@ -24,10 +24,10 @@ const CartDropdown = () => {
 						? `Total Price: $${parseFloat(totalPrice).toFixed(2)}`
 						: `Cart is empty`}
 				</div>
-			</div>
+			</CartItems>
 
 			<Button onClick={navToCheckoutHandler}>checkout</Button>
-		</div>
+		</CartDropdownContainer>
 	);
 };
 

@@ -1,4 +1,9 @@
-import "./Checkout.scss";
+import {
+	CheckoutContainer,
+	CheckoutHeader,
+	HeaderBlock,
+	Total,
+} from "./Checkout.styles.js";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 import CheckoutItem from "../../components/CheckoutItem/CheckoutItem";
@@ -8,33 +13,33 @@ const Checkout = () => {
 	const { cartItems, totalPrice } = useContext(CartContext);
 
 	return (
-		<div className="checkout-container">
-			<div className="checkout-header">
-				<div className="header-block">
+		<CheckoutContainer>
+			<CheckoutHeader>
+				<HeaderBlock>
 					<span>Product</span>
-				</div>
-				<div className="header-block">
+				</HeaderBlock>
+				<HeaderBlock>
 					<span>Description</span>
-				</div>
-				<div className="header-block">
+				</HeaderBlock>
+				<HeaderBlock>
 					<span>Quantity</span>
-				</div>
-				<div className="header-block">
+				</HeaderBlock>
+				<HeaderBlock>
 					<span>Price</span>
-				</div>
-				<div className="header-block">
+				</HeaderBlock>
+				<HeaderBlock>
 					<span>Remove</span>
-				</div>
-			</div>
+				</HeaderBlock>
+			</CheckoutHeader>
 			{cartItems.map((item) => {
 				return <CheckoutItem key={item.id} cartItem={item} />;
 			})}
-            <div className='total'>
-					{cartItems.length > 0
-						? `Total Price: $${parseFloat(totalPrice).toFixed(2)}`
-						: `Cart is empty`}
-				</div>
-		</div>
+			<Total>
+				{cartItems.length > 0
+					? `Total Price: $${parseFloat(totalPrice).toFixed(2)}`
+					: `Cart is empty`}
+			</Total>
+		</CheckoutContainer>
 	);
 };
 

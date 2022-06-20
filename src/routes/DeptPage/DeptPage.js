@@ -1,4 +1,4 @@
-import "./dept-page.scss";
+import './dept-page.scss';
 import { useParams } from "react-router-dom";
 import { CategoryContext } from "../../context/categories.context";
 import { useContext, useState, useEffect } from "react";
