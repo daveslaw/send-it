@@ -1,5 +1,5 @@
 import DeptItem from '../DeptItem/DeptItem';
-import './depts.styles.scss';
+import {DeptsContainer} from './depts.styles.js';
 
 const Depts = () => {
 	
@@ -32,7 +32,7 @@ const Depts = () => {
 	];
     
     return (
-		<div className="departments-container">
+		<DeptsContainer>
 			{deptArray.map((department) => (
 				<DeptItem
 					key={department.id}
@@ -40,7 +40,7 @@ const Depts = () => {
 					imageUrl={department.imageUrl}
 				/>
 			))}
-		</div>
+		</DeptsContainer>
 	);
 };
 

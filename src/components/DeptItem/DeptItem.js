@@ -1,17 +1,18 @@
-import "./dept-item.styles.js";
+import {
+	BackgroundImage,
+	Body,
+	DeptBodyContainer,
+} from "./dept-item.styles.js";
 
-const DeptItem = ({imageUrl, title}) => {
+const DeptItem = ({ imageUrl, title }) => {
 	return (
-		<div className="department-container" >
-			<div
-				className="background-image"
-				style={{ backgroundImage: `url(${imageUrl})` }}
-			/>
-			<div className="department-body-container">
+		<DeptBodyContainer>
+			<BackgroundImage imageUrl={imageUrl} />
+			<Body>
 				<h2>{title}</h2>
 				<p>Shop now</p>
-			</div>
-		</div>
+			</Body>
+		</DeptBodyContainer>
 	);
 };
 
