@@ -13,16 +13,19 @@ const DeptPage = () => {
 
 	useEffect(() => {
 		console.log(department);
-        setProducts(categoriesMap[department]);
+		setProducts(categoriesMap[department]);
 	}, [department, categoriesMap]);
 
 	return (
-		<div className="dept-container">
-			{products &&
-				products.map((product) => (
-					<ProductCard key={product.id} product={product} />
-				))}
-		</div>
+		<>
+			<h2 className="dept-page-title">{department.toUpperCase()}</h2>
+			<div className="dept-container">
+				{products &&
+					products.map((product) => (
+						<ProductCard key={product.id} product={product} />
+					))}
+			</div>
+		</>
 	);
 };
 
