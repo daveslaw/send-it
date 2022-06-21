@@ -1,4 +1,4 @@
-import './dept-page.scss';
+import {DeptPageTitle, DeptContainer} from './dept-page.styles.js';
 import { useParams } from "react-router-dom";
 import { CategoryContext } from "../../context/categories.context";
 import { useContext, useState, useEffect } from "react";
@@ -18,13 +18,13 @@ const DeptPage = () => {
 
 	return (
 		<>
-			<h2 className="dept-page-title">{department.toUpperCase()}</h2>
-			<div className="dept-container">
+			<DeptPageTitle>{department.toUpperCase()}</DeptPageTitle>
+			<DeptContainer>
 				{products &&
 					products.map((product) => (
 						<ProductCard key={product.id} product={product} />
 					))}
-			</div>
+			</DeptContainer>
 		</>
 	);
 };

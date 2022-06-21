@@ -1,5 +1,4 @@
 import {Routes, Route} from 'react-router-dom';
-import "./shop.styles.scss";
 import DeptsPreview from '../DeptsPreview/DeptsPreview';
 import DeptPage from '../DeptPage/DeptPage';
 
