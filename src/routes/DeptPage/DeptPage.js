@@ -12,7 +12,6 @@ const DeptPage = () => {
 	const [products, setProducts] = useState(categoriesMap[department]);
 
 	useEffect(() => {
-		console.log(department);
 		setProducts(categoriesMap[department]);
 	}, [department, categoriesMap]);
 

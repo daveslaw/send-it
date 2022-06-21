@@ -3,10 +3,18 @@ import {
 	Body,
 	DeptBodyContainer,
 } from "./dept-item.styles.js";
+import {useNavigate} from 'react-router-dom';
 
-const DeptItem = ({ imageUrl, title }) => {
+const DeptItem = ({ department }) => {
+	
+	const {title, imageUrl, route} = department;
+	const navigate = useNavigate();
+
+	const navigateHandler = () => navigate(route);
+
+	
 	return (
-		<DeptBodyContainer>
+		<DeptBodyContainer onClick={navigateHandler}>
 			<BackgroundImage imageUrl={imageUrl} />
 			<Body>
 				<h2>{title}</h2>
