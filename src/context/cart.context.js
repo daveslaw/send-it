@@ -112,7 +112,7 @@ export const CartProvider = ({ children }) => {
     updateCartItemsReducer(newCartItems);
   };
 
-  const removeItemToCart = (cartItemToRemove) => {
+  const removeItemFromCart = (cartItemToRemove) => {
     const newCartItems = removeCartItem(cartItems, cartItemToRemove);
     updateCartItemsReducer(newCartItems);
   };
@@ -126,7 +126,7 @@ export const CartProvider = ({ children }) => {
     show,
     setShow,
     addItemToCart,
-    removeItemToCart,
+    removeItemFromCart,
     clearItemFromCart,
     cartItems,
     cartCount,
