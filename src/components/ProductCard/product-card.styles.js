@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ProductCardContainer = styled.div`
   width: 100%;
@@ -44,6 +44,4 @@ export const Name = styled.span`
   margin-bottom: 15px;
 `;
 
-export const Price = styled.span`
-  
-`;
+export const Price = styled.span``;
