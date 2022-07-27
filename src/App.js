@@ -5,8 +5,29 @@ import Shop from "../src/routes/Shop/Shop";
 import Authentication from "./routes/Authentication/Authentication";
 import { Route, Routes } from "react-router-dom";
 import Checkout from "./routes/Checkout/Checkout";
+import { useEffect } from "react";
+import {useDispatch} from 'react-redux';
+import {
+	onAuthStateChangeListener,
+	createUserDoc,
+} from "./utils/Firebase/firebase.utils";
+import {setCurrentUser} from './store/user/user.action';
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+		const unsubscribe = onAuthStateChangeListener((user) => {
+			if (user) {
+				createUserDoc(user);
+			}
+			dispatch(setCurrentUser(user));
+		});
+
+		return unsubscribe;
+	}, []);
+
+  
+  
   return (
     <Routes>
       <Route path="/" element={<NavBar />}>
